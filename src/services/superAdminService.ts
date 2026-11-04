@@ -30,12 +30,16 @@ export const superAdminService = {
 
   // 3. User Management
   getUsers: async (params?: { role?: string; status?: string; page?: number; limit?: number; search?: string }) => {
-    const res = await apiClient.get('/admin/users', { params });
+    const res = await apiClient.get('/v1/admin/users', { params }).catch(async () => {
+      return await apiClient.get('/admin/users', { params });
+    });
     return res.data;
   },
 
   updateUserStatus: async (userId: string, status: string) => {
-    const res = await apiClient.put(`/admin/users/${userId}/status`, { status });
+    const res = await apiClient.put(`/v1/admin/users/${userId}/status`, { status }).catch(async () => {
+      return await apiClient.put(`/admin/users/${userId}/status`, { status });
+    });
     return res.data;
   },
 
