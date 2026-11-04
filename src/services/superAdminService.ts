@@ -61,14 +61,15 @@ export const superAdminService = {
 
   // 5. Catalogue & Listing Management
   getListings: async (params?: { status?: string; category?: string; page?: number; limit?: number }) => {
-    const res = await apiClient.get('/admin/listings', { params }).catch(async () => {
-      return await apiClient.get('/catalogue', { params });
-    });
+    const res = await apiClient.get('/v1/admin/listings', { params })
+      .catch(() => apiClient.get('/admin/listings', { params }))
+      .catch(() => apiClient.get('/catalogue', { params }));
     return res.data;
   },
 
   deleteListing: async (listingId: string) => {
-    const res = await apiClient.delete(`/admin/listings/${listingId}`);
+    const res = await apiClient.delete(`/v1/admin/listings/${listingId}`)
+      .catch(() => apiClient.delete(`/admin/listings/${listingId}`));
     return res.data;
   },
 
@@ -107,12 +108,12 @@ export const superAdminService = {
 
   // 9. Advertisements
   getAds: async () => {
-    const res = await apiClient.get('/ads');
+    const res = await apiClient.get('/v1/ads').catch(() => apiClient.get('/ads'));
     return res.data;
   },
 
   createAd: async (payload: any) => {
-    const res = await apiClient.post('/ads', payload);
+    const res = await apiClient.post('/v1/ads', payload).catch(() => apiClient.post('/ads', payload));
     return res.data;
   },
 
@@ -160,7 +161,7 @@ export const superAdminService = {
 
   // 12. Audit Logs
   getAuditLogs: async () => {
-    const res = await apiClient.get('/admin/logs');
+    const res = await apiClient.get('/v1/admin/logs').catch(() => apiClient.get('/admin/logs'));
     return res.data;
   },
 
