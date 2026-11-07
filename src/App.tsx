@@ -18,6 +18,7 @@ import { AnalyticsAndReportsPage } from './pages/AnalyticsAndReportsPage';
 import { NotificationsAndAnnouncementsPage } from './pages/NotificationsAndAnnouncementsPage';
 import { AdminAndStaffPage } from './pages/AdminAndStaffPage';
 import { CustomPagesPage } from './pages/CustomPagesPage';
+import { PublicCustomPageView } from './pages/PublicCustomPageView';
 import { PlatformSettingsPage } from './pages/PlatformSettingsPage';
 import { AuditLogsPage } from './pages/AuditLogsPage';
 import { SystemMonitoringPage } from './pages/SystemMonitoringPage';
@@ -49,6 +50,10 @@ export const App: React.FC = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
+
+          {/* Public Custom Pages & Policies (NO LOGIN REQUIRED) */}
+          <Route path="/pages/:slug" element={<PublicCustomPageView />} />
+          <Route path="/p/:slug" element={<PublicCustomPageView />} />
 
           <Route
             path="/dashboard"

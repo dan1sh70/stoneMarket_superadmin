@@ -27,8 +27,9 @@ apiClient.interceptors.response.use(
   (response: AxiosResponse) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      // Don't auto-redirect if already on login page
-      if (!window.location.pathname.includes('/login')) {
+      // Don't auto-redirect if already on login page or viewing public pages
+      const pathname = window.location.pathname;
+      if (!pathname.includes('/login') && !pathname.startsWith('/pages/') && !pathname.startsWith('/p/')) {
         localStorage.removeItem('superadmin_token');
         localStorage.removeItem('superadmin_user');
         window.location.href = '/login?expired=1';
