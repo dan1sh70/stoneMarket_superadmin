@@ -207,5 +207,54 @@ export const superAdminService = {
   getSystemHealth: async () => {
     const res = await apiClient.get('/app/version').catch(() => ({ data: { version: '1.0.0', status: 'online' } }));
     return res.data;
+  },
+
+  // 17. Custom Pages Management (CMS, Policies, Terms, About, Legal)
+  getCustomPages: async (params?: { search?: string; category?: string; status?: string }) => {
+    const res = await apiClient.get('/admin/super/pages', { params });
+    return res.data?.data || res.data;
+  },
+
+  getCustomPageByIdOrSlug: async (idOrSlug: string) => {
+    const res = await apiClient.get(`/admin/super/pages/${idOrSlug}`);
+    return res.data?.data || res.data;
+  },
+
+  createCustomPage: async (payload: {
+    title: string;
+    slug?: string;
+    category: string;
+    content: string;
+    summary?: string;
+    status: string;
+    meta_title?: string;
+    meta_description?: string;
+  }) => {
+    const res = await apiClient.post('/admin/super/pages', payload);
+    return res.data?.data || res.data;
+  },
+
+  updateCustomPage: async (id: string, payload: {
+    title?: string;
+    slug?: string;
+    category?: string;
+    content?: string;
+    summary?: string;
+    status?: string;
+    meta_title?: string;
+    meta_description?: string;
+  }) => {
+    const res = await apiClient.put(`/admin/super/pages/${id}`, payload);
+    return res.data?.data || res.data;
+  },
+
+  toggleCustomPageStatus: async (id: string, status: string) => {
+    const res = await apiClient.patch(`/admin/super/pages/${id}/status`, { status });
+    return res.data?.data || res.data;
+  },
+
+  deleteCustomPage: async (id: string) => {
+    const res = await apiClient.delete(`/admin/super/pages/${id}`);
+    return res.data?.data || res.data;
   }
 };

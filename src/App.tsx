@@ -17,6 +17,7 @@ import { ReportsAndComplaintsPage } from './pages/ReportsAndComplaintsPage';
 import { AnalyticsAndReportsPage } from './pages/AnalyticsAndReportsPage';
 import { NotificationsAndAnnouncementsPage } from './pages/NotificationsAndAnnouncementsPage';
 import { AdminAndStaffPage } from './pages/AdminAndStaffPage';
+import { CustomPagesPage } from './pages/CustomPagesPage';
 import { PlatformSettingsPage } from './pages/PlatformSettingsPage';
 import { AuditLogsPage } from './pages/AuditLogsPage';
 import { SystemMonitoringPage } from './pages/SystemMonitoringPage';
@@ -171,6 +172,15 @@ export const App: React.FC = () => {
             element={
               <ProtectedRoute>
                 <AdminAndStaffPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/custom-pages"
+            element={
+              <ProtectedRoute>
+                <CustomPagesPage />
               </ProtectedRoute>
             }
           />

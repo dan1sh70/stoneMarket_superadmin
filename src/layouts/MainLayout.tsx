@@ -52,6 +52,7 @@ const navigationConfig: SidebarItem[] = [
   { name: 'Analytics & Reports', path: '/analytics', icon: BarChart3 },
   { name: 'Notifications & Announcements', path: '/notifications', icon: Bell },
   { name: 'Admin & Staff Management', path: '/staff', icon: UserCheck },
+  { name: 'Custom Pages & CMS', path: '/custom-pages', icon: FileText },
   { name: 'Platform Settings', path: '/settings', icon: Settings },
   { name: 'Audit Logs', path: '/audit-logs', icon: FileText },
   { name: 'System Monitoring', path: '/system-monitoring', icon: Activity, badgeStatic: '●', badgeColor: 'text-emerald-400 bg-transparent' },
