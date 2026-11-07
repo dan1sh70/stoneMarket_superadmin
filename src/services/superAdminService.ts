@@ -256,5 +256,30 @@ export const superAdminService = {
   deleteCustomPage: async (id: string) => {
     const res = await apiClient.delete(`/admin/super/pages/${id}`);
     return res.data?.data || res.data;
+  },
+
+  // 18. Vision OCR Hub (Stone Image Matching & Estimation Document OCR)
+  matchStoneImage: async (formData: FormData) => {
+    const res = await apiClient.post('/v1/ocr/stone-match', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    }).catch(() => apiClient.post('/ocr/stone-match', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    }));
+    return res.data?.data || res.data;
+  },
+
+  parseEstimateImage: async (formData: FormData) => {
+    const res = await apiClient.post('/v1/ocr/estimate-parse', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    }).catch(() => apiClient.post('/ocr/estimate-parse', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    }));
+    return res.data?.data || res.data;
+  },
+
+  saveParsedEstimate: async (payload: any) => {
+    const res = await apiClient.post('/v1/ocr/save-parsed-estimate', payload)
+      .catch(() => apiClient.post('/ocr/save-parsed-estimate', payload));
+    return res.data?.data || res.data;
   }
 };

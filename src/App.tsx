@@ -17,6 +17,7 @@ import { ReportsAndComplaintsPage } from './pages/ReportsAndComplaintsPage';
 import { AnalyticsAndReportsPage } from './pages/AnalyticsAndReportsPage';
 import { NotificationsAndAnnouncementsPage } from './pages/NotificationsAndAnnouncementsPage';
 import { AdminAndStaffPage } from './pages/AdminAndStaffPage';
+import { VisionOcrLabPage } from './pages/VisionOcrLabPage';
 import { CustomPagesPage } from './pages/CustomPagesPage';
 import { PublicCustomPageView } from './pages/PublicCustomPageView';
 import { PlatformSettingsPage } from './pages/PlatformSettingsPage';
@@ -177,6 +178,15 @@ export const App: React.FC = () => {
             element={
               <ProtectedRoute>
                 <AdminAndStaffPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/vision-ocr"
+            element={
+              <ProtectedRoute>
+                <VisionOcrLabPage />
               </ProtectedRoute>
             }
           />
