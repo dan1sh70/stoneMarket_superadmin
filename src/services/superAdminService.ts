@@ -203,6 +203,21 @@ export const superAdminService = {
     return res.data;
   },
 
+  getApiKeys: async () => {
+    const res = await apiClient.get('/admin/super/settings/keys');
+    return res.data?.data || res.data;
+  },
+
+  saveApiKeys: async (keys: any) => {
+    const res = await apiClient.put('/admin/super/settings/keys', keys);
+    return res.data?.data || res.data;
+  },
+
+  getGeneralPublicKeys: async () => {
+    const res = await apiClient.get('/app/keys').catch(() => apiClient.get('/v1/app/keys'));
+    return res.data?.data || res.data;
+  },
+
   // 16. System Health Monitoring
   getSystemHealth: async () => {
     const res = await apiClient.get('/app/version').catch(() => ({ data: { version: '1.0.0', status: 'online' } }));
