@@ -29,7 +29,12 @@ apiClient.interceptors.response.use(
     if (error.response && error.response.status === 401) {
       // Don't auto-redirect if already on login page or viewing public pages
       const pathname = window.location.pathname;
-      if (!pathname.includes('/login') && !pathname.startsWith('/pages/') && !pathname.startsWith('/p/')) {
+      const isPublicPath = pathname.includes('/login') || 
+                           pathname.startsWith('/pages/') || 
+                           pathname.startsWith('/p/') ||
+                           pathname === '/delete-account' ||
+                           pathname === '/delete-my-account';
+      if (!isPublicPath) {
         localStorage.removeItem('superadmin_token');
         localStorage.removeItem('superadmin_user');
         window.location.href = '/login?expired=1';

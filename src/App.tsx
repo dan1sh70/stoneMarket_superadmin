@@ -20,6 +20,7 @@ import { AdminAndStaffPage } from './pages/AdminAndStaffPage';
 import { VisionOcrLabPage } from './pages/VisionOcrLabPage';
 import { CustomPagesPage } from './pages/CustomPagesPage';
 import { PublicCustomPageView } from './pages/PublicCustomPageView';
+import { DeleteMyAccountPage } from './pages/DeleteMyAccountPage';
 import { PlatformSettingsPage } from './pages/PlatformSettingsPage';
 import { AuditLogsPage } from './pages/AuditLogsPage';
 import { SystemMonitoringPage } from './pages/SystemMonitoringPage';
@@ -55,6 +56,10 @@ export const App: React.FC = () => {
           {/* Public Custom Pages & Policies (NO LOGIN REQUIRED) */}
           <Route path="/pages/:slug" element={<PublicCustomPageView />} />
           <Route path="/p/:slug" element={<PublicCustomPageView />} />
+
+          {/* Google Play Store Mandatory Account Deletion Portal (NO LOGIN REQUIRED) */}
+          <Route path="/delete-account" element={<DeleteMyAccountPage />} />
+          <Route path="/delete-my-account" element={<DeleteMyAccountPage />} />
 
           <Route
             path="/dashboard"
