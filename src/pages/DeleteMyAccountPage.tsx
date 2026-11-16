@@ -250,3 +250,4 @@ export const DeleteMyAccountPage: React.FC = () => {
     </div>
   );
 };
+
