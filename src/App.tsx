@@ -19,6 +19,7 @@ import { NotificationsAndAnnouncementsPage } from './pages/NotificationsAndAnnou
 import { AdminAndStaffPage } from './pages/AdminAndStaffPage';
 import { VisionOcrLabPage } from './pages/VisionOcrLabPage';
 import { CustomPagesPage } from './pages/CustomPagesPage';
+import { ActivitiesBlogPage } from './pages/ActivitiesBlogPage';
 import { PublicCustomPageView } from './pages/PublicCustomPageView';
 import { DeleteMyAccountPage } from './pages/DeleteMyAccountPage';
 import { PlatformSettingsPage } from './pages/PlatformSettingsPage';
@@ -201,6 +202,15 @@ export const App: React.FC = () => {
             element={
               <ProtectedRoute>
                 <CustomPagesPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/activities"
+            element={
+              <ProtectedRoute>
+                <ActivitiesBlogPage />
               </ProtectedRoute>
             }
           />

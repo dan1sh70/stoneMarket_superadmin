@@ -24,7 +24,8 @@ import {
   X,
   Search,
   CheckCircle2,
-  Sparkles
+  Sparkles,
+  Newspaper
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { superAdminService } from '../services/superAdminService';
@@ -52,6 +53,7 @@ const navigationConfig: SidebarItem[] = [
   { name: 'Reports & Complaints', path: '/reports', icon: AlertTriangle, badgeKey: 'pendingSupport', badgeColor: 'bg-red-500' },
   { name: 'Analytics & Reports', path: '/analytics', icon: BarChart3 },
   { name: 'Notifications & Announcements', path: '/notifications', icon: Bell },
+  { name: 'Activities & Blogs CMS', path: '/activities', icon: Newspaper, badgeStatic: 'Feed', badgeColor: 'bg-blue-600 text-white' },
   { name: 'Admin & Staff Management', path: '/staff', icon: UserCheck },
   { name: 'Vision OCR & AI Lab', path: '/vision-ocr', icon: Sparkles, badgeStatic: 'AI', badgeColor: 'bg-purple-600 text-white' },
   { name: 'Custom Pages & CMS', path: '/custom-pages', icon: FileText },

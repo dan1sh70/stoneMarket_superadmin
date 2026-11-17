@@ -296,5 +296,70 @@ export const superAdminService = {
     const res = await apiClient.post('/v1/ocr/save-parsed-estimate', payload)
       .catch(() => apiClient.post('/ocr/save-parsed-estimate', payload));
     return res.data?.data || res.data;
+  },
+
+  // 19. Stone Market Activities & Blog CMS
+  getActivities: async (params?: { search?: string; type?: string; status?: string; page?: number; limit?: number }) => {
+    const res = await apiClient.get('/admin/super/activities', { params })
+      .catch(() => apiClient.get('/app/activities', { params }))
+      .catch(() => apiClient.get('/v1/app/activities', { params }));
+    return res.data?.data || res.data;
+  },
+
+  getActivityByIdOrSlug: async (idOrSlug: string) => {
+    const res = await apiClient.get(`/admin/super/activities/${idOrSlug}`)
+      .catch(() => apiClient.get(`/app/activities/${idOrSlug}`))
+      .catch(() => apiClient.get(`/v1/app/activities/${idOrSlug}`));
+    return res.data?.data || res.data;
+  },
+
+  createActivity: async (payload: {
+    title: string;
+    slug?: string;
+    description?: string;
+    content?: string;
+    image?: string;
+    gallery_images?: string[];
+    type: string;
+    category?: string;
+    tags?: string[] | string;
+    url?: string;
+    author_name?: string;
+    status: string;
+    is_featured?: boolean;
+    published_at?: string;
+  }) => {
+    const res = await apiClient.post('/admin/super/activities', payload);
+    return res.data?.data || res.data;
+  },
+
+  updateActivity: async (id: string, payload: {
+    title?: string;
+    slug?: string;
+    description?: string;
+    content?: string;
+    image?: string;
+    gallery_images?: string[];
+    type?: string;
+    category?: string;
+    tags?: string[] | string;
+    url?: string;
+    author_name?: string;
+    status?: string;
+    is_featured?: boolean;
+    published_at?: string;
+  }) => {
+    const res = await apiClient.put(`/admin/super/activities/${id}`, payload);
+    return res.data?.data || res.data;
+  },
+
+  toggleActivityStatus: async (id: string, status: string) => {
+    const res = await apiClient.patch(`/admin/super/activities/${id}/status`, { status });
+    return res.data?.data || res.data;
+  },
+
+  deleteActivity: async (id: string) => {
+    const res = await apiClient.delete(`/admin/super/activities/${id}`);
+    return res.data?.data || res.data;
   }
 };
